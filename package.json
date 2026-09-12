@@ -1,0 +1,14 @@
+{
+  "name": "imdb-ratings-graphql",
+  "version": "1.0.0",
+  "description": "Read your own IMDb ratings from IMDb's undocumented GraphQL endpoint — no API key, no login, no CSV export.",
+  "type": "module",
+  "main": "src/imdb.js",
+  "exports": { ".": "./src/imdb.js" },
+  "bin": { "imdb-ratings": "src/cli.mjs" },
+  "files": ["src", "README.md", "LICENSE"],
+  "scripts": { "test": "node --test test/" },
+  "keywords": ["imdb", "graphql", "ratings", "watch-history", "now-watching"],
+  "license": "MIT",
+  "engines": { "node": ">=18" }
+}
