@@ -160,6 +160,25 @@ x-imdb-user-country: US
 x-imdb-user-language: en-US
 ```
 
+### HTTP 429 from Cloudflare Workers
+
+The same request can succeed from a laptop and fail with `429` from a Worker.
+IMDb appears to rate-limit by source IP, and a Worker's default outbound IPs are
+shared with a lot of other traffic. It stays `429` on retry, so backing off does
+not help.
+
+Pinning the Worker to a region gave it different outbound IPs and cleared the
+error. In `wrangler.jsonc`:
+
+```jsonc
+"placement": { "region": "aws:us-east-1" }
+```
+
+That is one observed fix rather than a guarantee, and IMDb can change its
+limits at any time. Whatever you run on, cache the result — the example Worker
+does — so you are making a request every few minutes rather than one per page
+view.
+
 ## Caveats
 
 **This is undocumented internal plumbing.** Nobody promised it will keep
