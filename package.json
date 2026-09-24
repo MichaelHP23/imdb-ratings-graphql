@@ -7,7 +7,7 @@
   "exports": { ".": "./src/imdb.js" },
   "bin": { "imdb-ratings": "src/cli.mjs" },
   "files": ["src", "README.md", "LICENSE"],
-  "scripts": { "test": "node --test test/" },
+  "scripts": { "test": "node --test" },
   "keywords": ["imdb", "graphql", "ratings", "watch-history", "now-watching"],
   "license": "MIT",
   "engines": { "node": ">=18" }
